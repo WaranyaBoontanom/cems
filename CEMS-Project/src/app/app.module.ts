@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgSelectModule } from '@ng-select/ng-select';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -30,6 +31,7 @@ import { StuQualifyingStatusComponent } from './stu-qualifying-status/stu-qualif
 import { UserManualComponent } from './user-manual/user-manual.component';
 import { StaffProfileManagementComponent } from './staff-profile-management/staff-profile-management.component';
 import { NewAccountComponent } from './new-account/new-account.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { NewAccountComponent } from './new-account/new-account.component';
     StuQualifyingStatusComponent,
     UserManualComponent,
     StaffProfileManagementComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    NotFoundComponent
   ],
   imports: [
     NgbModule,
@@ -60,10 +63,12 @@ import { NewAccountComponent } from './new-account/new-account.component';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    NgSelectModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [
+    Title,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

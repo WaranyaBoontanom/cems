@@ -16,21 +16,24 @@ import { StuQualificationcementComponent } from './stu-qualificationcement/stu-q
 import { StuQualifyingStatusComponent } from './stu-qualifying-status/stu-qualifying-status.component';
 import { UserManualComponent } from './user-manual/user-manual.component';
 import { NewAccountComponent } from './new-account/new-account.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path : '', component: HomeComponent },
-  { path : 'index', component: MainscreenComponent },
-  { path : 'login', component: LogInComponent },
-  { path : 'sign-up', component: SignUpComponent },
-  { path : 'app-form', component: StudentOrgAppFormComponent,canActivate: [AuthGuard] },
-  { path : 'profile-management/stu', component: EduProfileManagementComponent,canActivate: [AuthGuard], data: { roles: [Role.User]} },
-  { path : 'profile-management/staff', component: StaffProfileManagementComponent, canActivate: [AuthGuard], data: { roles: [Role.Staff,Role.Admin]} },
-  { path : 'announcement', component: JodDetailAnnouncementComponent},
-  { path : 'qualification', component: StuQualificationcementComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin,Role.Staff,Role.Agent]} },
-  { path : 'qualifying', component: StuQualifyingStatusComponent},
-  { path : 'UserManual', component: UserManualComponent },
-  { path : 'new-account', component: NewAccountComponent,canActivate: [AuthGuard], data: { roles: [Role.Admin,Role.Staff]} },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path : 'notfound', component: NotFoundComponent, data: { title: 'Error 404'} },
+  { path : 'index', component: MainscreenComponent, data: { title: 'หน้าแรก'} },
+  { path : 'login', component: LogInComponent, data: { title: 'เข้าสู่ระบบ'} },
+  { path : 'sign-up', component: SignUpComponent, data: { title: 'สร้างบัญชี'} },
+  { path : 'app-form', component: StudentOrgAppFormComponent,canActivate: [AuthGuard], data: { title: 'สมัครคัดเลือก'} },
+  { path : 'profile-management/stu', component: EduProfileManagementComponent,canActivate: [AuthGuard], data: { title: 'จัดการข้อมูลส่วนตัว',roles: [Role.User]} },
+  { path : 'profile-management/staff', component: StaffProfileManagementComponent, canActivate: [AuthGuard], data: { title: 'จัดการข้อมูลส่วนตัว',roles: [Role.Staff,Role.Admin]} },
+  { path : 'announcement', component: JodDetailAnnouncementComponent, data: { title: 'ประกาศ'} },
+  { path : 'qualification', component: StuQualificationcementComponent,canActivate: [AuthGuard], data: { title: 'คัดเลือก',roles: [Role.Admin,Role.Staff,Role.Agent]} },
+  { path : 'qualifying', component: StuQualifyingStatusComponent, data: { title: 'ดูผลการคัดเลือก'} },
+  { path : 'UserManual', component: UserManualComponent, data: { title: 'แนะนำการใช้งาน'}  },
+  // -------------------- ADMIN
+  { path : 'new-account', component: NewAccountComponent,canActivate: [AuthGuard], data: { title: 'เพิ่มผู้ใช้', roles: [Role.Admin]} },
+  { path : '**', redirectTo: 'notfound', pathMatch: 'full' }
 ];
 
 @NgModule({

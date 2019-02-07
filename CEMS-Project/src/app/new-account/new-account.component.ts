@@ -1,3 +1,6 @@
+// role : admin only
+// new account by admin
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

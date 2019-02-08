@@ -1,9 +1,11 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
+import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -63,6 +65,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    NgProgressModule.withConfig({
+      spinner : false,
+      color: '#fff'
+    }),
+    NgProgressHttpModule,
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule

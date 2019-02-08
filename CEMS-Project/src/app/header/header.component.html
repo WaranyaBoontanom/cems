@@ -21,16 +21,21 @@
       <li class="nav-item" *ngIf="isSignin && !isUser">
         <a class="nav-link" routerLink="/qualification" routerLinkActive="active">คัดเลือก</a>
       </li>
-      <li class="nav-item" *ngIf="isSignin">
+      <li class="nav-item" *ngIf="isStaff || isAdmin">
           <!-- <a *ngIf="isUser" class="nav-link" routerLink="/profile-management/stu" routerLinkActive="active">จัดการข้อมูลส่วนตัว</a>
           <a *ngIf="isStaff,isAdmin" class="nav-link" routerLink="/profile-management/staff" routerLinkActive="active">จัดการข้อมูลส่วนตัว</a> -->
-          <ng-container *ngIf="isStaff || isAdmin; else elseNav">
-              <a class="nav-link" routerLink="/profile-management/staff" routerLinkActive="active">จัดการข้อมูลส่วนตัว</a>
-          </ng-container>
-          <ng-template #elseNav>
-              <a class="nav-link" routerLink="/profile-management/stu" routerLinkActive="active">จัดการข้อมูลส่วนตัว</a>
-          </ng-template>
+          <a class="nav-link" routerLink="/profile-management/staff" routerLinkActive="active">จัดการข้อมูลส่วนตัว</a>
       </li>
+
+      <li class="nav-item dropdown" *ngIf="isUser">
+        <a class="nav-link dropdown-toggle" routerLinkActive="active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          จัดการข้อมูลส่วนตัว
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/profile-management/stu"><fa name="address-card"></fa> INS001</a>
+        </div>
+      </li>
+      
       <li class="nav-item">
         <a class="nav-link" routerLink="/UserManual" routerLinkActive="active">แนะนำการใช้งาน</a>
       </li>
@@ -52,9 +57,9 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" routerLink="/new-account" *ngIf="isStaff || isAdmin">เพิ่มบัญชี</a>
-            <a class="dropdown-item" href="#">ตั้งค่าบัญชี</a>
+            <a class="dropdown-item" href="#"><fa name="cogs"></fa> ตั้งค่าบัญชี</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logout()">ออกจากระบบ</a>
+            <a class="dropdown-item" (click)="logout()"><fa name="sign-out"></fa> ออกจากระบบ</a>
           </div>
         </li>
 
